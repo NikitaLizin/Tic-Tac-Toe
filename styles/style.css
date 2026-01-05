@@ -1,0 +1,318 @@
+/* 
+  Colors
+
+  1).green - #7ADAA5
+  2).blue - #239BA7
+  3).orange - #E1AA36
+  4).light - #ECECBB
+
+*/
+
+/* @media (max-width:500px){
+  :root {
+
+  }
+} */
+
+html, body {
+  overflow:hidden; 
+  height:100%; 
+}
+
+body{
+  position: fixed;
+  width:100%; 
+}
+
+.textContainer{
+  width:fit-content; 
+  height: fit-content;
+  margin-top:5px; 
+}
+
+.npc-container{
+  grid-area:footer; 
+  background-color: #E1AA36;
+  width:100%; 
+  height:100%; 
+  display:flex; 
+  flex-direction: column; 
+  justify-content: start;
+  align-items: center;
+}
+
+.display{
+  height: 100px;
+  width:100%; 
+}
+
+.piece{ 
+  height: 80%; 
+  width:80%;  
+}
+
+.winning-piece {
+  height: 80%; 
+  width:80%;
+  animation: winAnimation 500ms ease-in-out infinite alternate ; 
+}
+
+.npcAvatar {
+  height:50%; 
+  aspect-ratio: 1/1; 
+  border-radius: 50%;
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+}
+
+
+.npc-text-box{
+  height:fit-content;  
+  display:flex; 
+  align-items: center;
+  color:#ECECBB; 
+  font-size:clamp(0.7rem, 2.5vw,1.2rem);
+  text-align: center;
+  font-weight: bolder; 
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  /* border-right: .15em solid black; */ /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */ 
+  /* , blink-caret .75s step-end infinite */;
+  animation: typing 1.5s steps(28, end); 
+}
+
+
+
+
+
+
+.prevMove {
+  height:80%; 
+  width:80%; 
+  animation-name:show-prev-move;
+  animation-timing-function: ease-in-out;
+  animation-duration: 500ms;
+}
+
+
+.main {
+  position:relative; 
+  width:100%; 
+  height:100dvh;
+  overflow:hidden; 
+  /* grid-template-columns: 100%; 
+  grid-template-rows:20% 80% ;
+  grid-template-areas: 
+  "header"
+  "content"
+  "footer"
+  ;
+  display: grid; */
+  
+}
+
+/* Message box styling */
+
+  .messageBox{ 
+    position:absolute;
+    min-height: 150px;
+    place-self: center;
+    border-radius: 8px;
+    background-color:rgb(35, 155, 167,0.8); 
+    color:#ECECBB; 
+    font-weight: bold;
+    font-size:1.2rem;
+    padding: 10px 10px 10px 10px; 
+  }
+
+  .messageBox span {
+    cursor:pointer;  
+    font-weight: bolder;
+  }
+
+
+  .messageBox p {
+    text-align: center;
+  }
+
+/* End */
+
+.vs-container {
+  height: 50%;
+  aspect-ratio: 1/1;
+  background-color: #E1AA36;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:xx-large;
+  color: #ECECBB;
+  margin:0px 20px 0px 20px; 
+}
+
+.player-card-piece{
+  height:40%;
+  aspect-ratio: 1/1;
+  margin-right: 0px;
+}
+
+.player-vs-card {
+  position: relative;
+  height:50%; 
+  font-size:xx-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.player-header {
+  width:100%; 
+  height: 100%;
+  place-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.header {
+  font-size: clamp(1.2rem, 3vw, 2em); 
+  grid-area:header; 
+  place-self: center;
+  color:#E1AA36; 
+}
+
+.menuBtnContainer{
+  grid-area:content; 
+  place-self:end center; 
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:40px; 
+}
+
+/* Game style */
+
+  .gameContainer{
+    grid-area:content;  
+    /* width:600px; 
+    height: 600px; */   
+    place-self:center; 
+
+  }
+
+
+
+
+#exitBtn {
+  grid-area:header; 
+  width:40px; 
+  height:40px;
+  margin:10px 0px 0px 10px;  
+  color:#E1AA36; 
+  cursor: pointer;
+  font-weight: bolder;
+  border:none; 
+  background-color: transparent;
+}
+
+#exitBtn:hover{
+  scale:1.10; 
+}
+
+
+
+/* PlayAgain box styling */
+.playAgainContainer {
+  position: absolute;
+  grid-area:content; 
+  place-self:start center; 
+  margin-top:20px;
+  border-radius:8px;  
+  width:300px; 
+  height:150px; 
+  background-color: rgb(35, 155, 167,0.9);
+  grid-template-columns:100%;
+  grid-template-rows: 20% 80%;
+  grid-template-areas: 
+  "header"
+  "button"; 
+  display:grid; 
+  font-size:1.5rem;
+  text-align:center; 
+  color:#E1AA36;  
+  font-weight:bolder;
+  padding-top:20px; 
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  z-index:3; 
+}
+
+.playAgainBtnContainer{
+  display:flex; 
+  place-self: end center;
+  margin-bottom:20px; 
+}
+
+.playAgainBtn{
+  width:100px; 
+  font-size:1rem;
+  border-radius:8px;
+  padding:5px 0px 5px 0px;  
+  border:none; 
+  background-color:#E1AA36; 
+  color:#ECECBB;  
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.playAgainBtn:first-child{
+  margin-right:20px; 
+}
+
+.playAgainBtn:hover{
+  scale:1.05; 
+}
+
+
+@keyframes winAnimation {
+  from {
+    scale:0.9;
+  } to {
+    scale:1;
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black; }
+}
+
+@keyframes show-prev-move {
+  0% {
+    scale:0.2;
+  }
+  50% {
+    scale:1.1; 
+  }
+
+  75%{
+    scale:0.9; 
+  } 
+
+  100%{
+    scale:1; 
+  }
+}
+
+
+
+
+

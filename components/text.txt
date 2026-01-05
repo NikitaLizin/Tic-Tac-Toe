@@ -1,0 +1,8 @@
+return(
+    <>
+      <input type="radio" value = {inputValue} id = {inputValue} name = {inputName} style = {{display:"none"}} />
+      <label htmlFor = {inputValue} className="menuBtn" > {inputValue}  </label>
+      { checked === inputValue && <InfoBox menuType = {inputName} changeDifficulty = {changeDifficulty} changeMode = {changeMode} inputValue = {inputValue} />}
+      
+    </>
+  ) 
