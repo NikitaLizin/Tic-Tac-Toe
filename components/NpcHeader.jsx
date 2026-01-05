@@ -214,13 +214,13 @@ function GameOverTextBox ({win,difficulty}) {
 function pickImg (difficulty) {
   switch(difficulty){
     case "Easy":
-      return "/assets/EasyNpc.png";
+      return "./assets/EasyNpc.png";
     break; 
     case "Normal":
-      return "/assets/NormalNpc.png"; 
+      return "./assets/NormalNpc.png"; 
     break; 
     case "Hard": 
-      return "/assets/HardNpc.png";
+      return "./assets/HardNpc.png";
     break; 
   }
 }
