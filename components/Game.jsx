@@ -588,7 +588,7 @@ function checkForNpc (player1,player2) {
 }
 
 
-const moveAudio = new Audio("/assets/move.flac");
+const moveAudio = new Audio("./assets/move.flac");
 let lastMoveO = null; 
 let lastMoveX = null; 
 

@@ -4,14 +4,14 @@ const getContent = (piece,mode,prevMove,win) => {
   if (mode === "Classic"|| mode === "win") {
     switch(piece){
       case "X": 
-        if (win) return <img className="winning-piece" src="\assets\X.svg"/>
-        else if (prevMove != null && !win) return <img className="prevMove" src="\assets\X.svg"/>
+        if (win) return <img className="winning-piece" src=".\assets\X.svg"/>
+        else if (prevMove != null && !win) return <img className="prevMove" src=".\assets\X.svg"/>
         else return <img className="piece" src=".\assets\X.svg"/>
 
       break; 
       case "O": 
-        if (win) return <img className="winning-piece" src= "\assets\O.svg"/>
-        else if (prevMove != null && !win ) return <img className="prevMove" src= "\assets\O.svg"/>
+        if (win) return <img className="winning-piece" src= ".\assets\O.svg"/>
+        else if (prevMove != null && !win ) return <img className="prevMove" src= ".\assets\O.svg"/>
         else  return <img className="piece" src= ".\assets\O.svg"/>
       break; 
     }
