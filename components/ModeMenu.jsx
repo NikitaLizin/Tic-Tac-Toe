@@ -1,12 +1,85 @@
 
 const showClicked = (card,mode) => {
-  if (mode === card) return{scale:"1.1 ",boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"};
+  if (mode === card) return{scale:"1.1 ",/* boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" */};
   else return {scale:"1"}; 
 }
 
-function ModeMenu ({changeMode,currentMode}) {
-
+function PhoneModeMenu({changeMode,currentMode}){
   const [mode,setMode] = React.useState(currentMode); 
+  const modeIndex = getModeIndex(currentMode);  
+
+  const unActiveBtn = {opacity:"0.6"}; 
+
+  console.log
+
+  function getModeIndex (currentMode) {
+    if (currentMode === "Classic") return 1; 
+    else if (currentMode === "Memory") return 2; 
+    else return 0; 
+  }
+  
+  const modes = [
+
+    {
+      type:"No mode", 
+      content:"Select a game mode to begin.", 
+    },
+
+    {
+      type: "Classic",
+      content: "Play classic Tic-Tac-Toe.",
+      gif: "./assets/Classic.gif"
+    },
+    {
+      typ: "Memory", 
+      content: "Play a regular game of Tic-Tac-Toe — with a twist! You'll need to remember where you placed your piece.",
+      gif: "./assets/Memory.gif", 
+    }
+  ]
+  
+  
+  function handleClick (e) {
+    const btnPressed = e.target.value; 
+
+    setMode(btnPressed);
+    changeMode(btnPressed);  
+  }   
+
+  return (
+    
+    <>
+      <Header type="modeMenu"/>
+      <div className="mode_menu_container_phone">
+
+        <div className="mode_btn_container">
+          <button className="mode_btn_phone" value={"Classic"} style={mode != "Classic" ? unActiveBtn:{}} onClick={handleClick}>Classic</button>
+          <button className="mode_btn_phone" value={"Memory"} style = {mode != "Memory" ? unActiveBtn:{}} onClick={handleClick}>Memory</button>
+        </div>
+
+        { mode != null && 
+          <div className="mode_display_phone">
+
+          
+            <img className="mode_img_phone" src={`${modes[modeIndex].gif}`} />
+          
+          
+          </div>
+        }
+
+        <div className="text_container_phone">
+          <p> 
+            {modes[modeIndex].content}
+          </p>
+        </div>
+        
+       
+      </div>
+    </>
+  )
+}
+
+function DisplayModeMenu({changeMode,currentMode}){
+    const [mode,setMode] = React.useState(currentMode); 
   
 
   function handleClick (e) {
@@ -44,4 +117,26 @@ function ModeMenu ({changeMode,currentMode}) {
       </div>
     </>
   )
+}
+
+
+function ModeMenu ({changeMode,currentMode}) {
+
+  const [mode,setMode] = React.useState(currentMode); 
+  
+
+  function handleClick (e) {
+    const btnPressed = e.target.value; 
+
+    setMode(btnPressed);
+    changeMode(btnPressed);  
+  }   
+
+  return (
+    
+    <>
+      <PhoneModeMenu changeMode={changeMode} currentMode={currentMode}/> 
+
+    </>
+  )  
 }

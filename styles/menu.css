@@ -110,7 +110,7 @@
   cursor: pointer;
   border-radius: 5px;
   background-color:#E1AA36;
-  opacity: 0.3; 
+  opacity: 0.6; 
   color: #ECECBB;
   font-size:1rem;
   font-weight: bold; 
@@ -182,34 +182,68 @@
 /* ModeMenu start */
 
   .modeMenuContainer{
-    width:90%; 
+    width:100%; 
     height:50%; 
     grid-area: content;
     place-self: start center;
-    display:flex;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+  }
+
+  .mode_menu_container_phone{
+    width:100%; 
+    height:50%;
+    grid-area:content; 
+    place-self: start center;
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+  }
+
+  .mode_btn_container{
+    width:100%;
+    height:20%;
+    display:flex; 
+    justify-content:center;
     align-items: center;
   }
 
+  .mode_btn_phone{
+    width:150px; 
+    height:40px;
+    font-size:1rem;   
+    border-radius: 4px;
+    color:#ECECBB; 
+    font-weight: bold;
+    border:none; 
+    text-align: center;
+    background-color: #E1AA36;
+    color:#ECECBB; 
+  }
+
+
+
+  .mode_btn_phone:first-child{
+    margin-right:20px; 
+  }
+
   .modeCard{
-    width:200px; 
-    height: 300px;  
+    width:100%;  
     background-color: #E1AA36;
     border-radius: 8px;
     display:grid; 
     grid-template-rows: 20% 60% 20%;
     place-items:center; 
     text-align: center;
-    padding:0px 10px 0px 10px;
-    transition: scale 1s ease;
   }
 
-  .modeCard p {
+  .modeCard p{
     color:#ECECBB;
     font-weight: bold; 
   }
 
-  .modeCard h2{
+  .modeCard h2 {
     color:#ECECBB; 
     font-weight: bolder;
     font-size: 1.8rem;  
@@ -229,16 +263,43 @@
     border-bottom-right-radius: 8px;
   }
 
-
+  .mode_display_phone{
+    width:100%; 
+    height:60%; 
+    display:flex; 
+    justify-content: center;
+    align-items: center;
+  }
+  
 
   .modeScreen{
-    width:300px; 
-    height:300px; 
+    height: 20%;
+    aspect-ratio: 1/1;
+  }
+
+  .mode_img_phone{
+    height:100%;    
+    aspect-ratio: 1/1;
+    max-width: 90%;
+    border-radius:8px; 
   }
 
   .modeImg{
     max-width:300px;  
-    max-height:300px;  
+    max-height:300px; 
+  }
+
+  .text_container_phone{
+    width:100%; 
+    height:20%; 
+    background-color: #E1AA36;
+    color:#ECECBB; 
+    text-align: center;
+    font-size:1rem; 
+    line-height: 1.5;
+    display:flex; 
+    justify-content: center;
+    align-items: center;
   }
 
 /* ModeMenu End */

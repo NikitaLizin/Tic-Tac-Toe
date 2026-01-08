@@ -96,10 +96,10 @@ function checkForDoubbleNPC (player1,player2) {
 function Main () { 
 
 
-  const [mode, setMode] = React.useState("Classic"); 
+  const [mode, setMode] = React.useState(null); 
   const [player1,setPlayer1] = React.useState("Pall"); 
   const [player2,setPlayer2] = React.useState("Nikk"); 
-  const [display,setDisplay] = React.useState("playerMenu");  
+  const [display,setDisplay] = React.useState("modeMenu");  
   const [boardSize, setBoardSize] = React.useState(5);
   const toWin = calcToWin(boardSize); 
   const [error,setError] = React.useState(null); 
