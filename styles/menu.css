@@ -105,7 +105,7 @@
 
 .player_type_btn { 
   width:150px;
-  height:30px; 
+  height:40px; 
   border:none; 
   cursor: pointer;
   border-radius: 5px;
@@ -173,8 +173,7 @@
   place-items:center;  
   position:relative;  
   height: 100%;
-  width: 100%;
-  /* height:100%; */ 
+  width: 100%; 
 }
 
 
@@ -187,7 +186,8 @@
     grid-area: content;
     place-self: start center;
     display: grid;
-    grid-template-columns: 40% 20% 40%;
+    place-items: center;
+    grid-template-columns: 37% 25% 37%;
   }
 
   .mode_menu_container_phone{
@@ -229,18 +229,21 @@
   }
 
   .modeCard{
-    width:100%;  
+    width:100%;
+    max-width:300px; 
+    aspect-ratio: 0.9/1.1; 
     background-color: #E1AA36;
     border-radius: 8px;
     display:grid; 
     grid-template-rows: 20% 60% 20%;
     place-items:center; 
     text-align: center;
+    transition: scale 250ms ease-in-out; 
   }
 
   .modeCard p{
-    color:#ECECBB;
-    font-weight: bold; 
+    color:#ECECBB; 
+    font-size:1rem; 
   }
 
   .modeCard h2 {
@@ -250,7 +253,7 @@
   }
 
   .modeBtn{
-    width:calc(100% + 20px); 
+    width:100%; 
     height:100%; 
     font-size:1.5rem; 
     background-color: #E1AA36;
@@ -273,7 +276,7 @@
   
 
   .modeScreen{
-    height: 20%;
+    width:100%; 
     aspect-ratio: 1/1;
   }
 
@@ -285,8 +288,8 @@
   }
 
   .modeImg{
-    max-width:300px;  
-    max-height:300px; 
+    width:100%;
+    height: 100%;   
   }
 
   .text_container_phone{

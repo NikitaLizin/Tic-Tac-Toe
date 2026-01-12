@@ -1,7 +1,12 @@
 
 const showClicked = (card,mode) => {
-  if (mode === card) return{scale:"1.1 ",/* boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" */};
+  if (mode === card) return{scale:"1.05 ",/* boxShadow: "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset" */};
   else return {scale:"1"}; 
+}
+
+function getDevice (windowSize) {
+  if (windowSize > 600) return "desktop"; 
+  else if (windowSize < 600) return "phone";  
 }
 
 function PhoneModeMenu({changeMode,currentMode}){
@@ -10,7 +15,6 @@ function PhoneModeMenu({changeMode,currentMode}){
 
   const unActiveBtn = {opacity:"0.6"}; 
 
-  console.log
 
   function getModeIndex (currentMode) {
     if (currentMode === "Classic") return 1; 
@@ -120,9 +124,20 @@ function DisplayModeMenu({changeMode,currentMode}){
 }
 
 
+
 function ModeMenu ({changeMode,currentMode}) {
 
   const [mode,setMode] = React.useState(currentMode); 
+  const [windowSize, setWindowSize] = React.useState(getDevice(window.innerWidth));  
+  
+  window.addEventListener("resize",() => {
+    if (window.innerWidth > 600 && windowSize != "desktop") setWindowSize("desktop");
+    else if (window.innerWidth < 600 && windowSize != "phone") setWindowSize("phone"); 
+  }); 
+
+  React.useEffect(() => {
+    console.log(windowSize);  
+  },[windowSize])
   
 
   function handleClick (e) {
@@ -135,7 +150,13 @@ function ModeMenu ({changeMode,currentMode}) {
   return (
     
     <>
-      <PhoneModeMenu changeMode={changeMode} currentMode={currentMode}/> 
+
+      {
+        windowSize === "desktop"? 
+        <DisplayModeMenu changeMode={changeMode} currentMode={currentMode}/> : 
+        <PhoneModeMenu changeMode={changeMode} currentMode={currentMode}/>  
+      }
+       
 
     </>
   )  
