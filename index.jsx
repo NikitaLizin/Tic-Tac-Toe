@@ -99,7 +99,7 @@ function Main () {
   const [mode, setMode] = React.useState(null); 
   const [player1,setPlayer1] = React.useState("Pall"); 
   const [player2,setPlayer2] = React.useState("Nikk"); 
-  const [display,setDisplay] = React.useState("modeMenu");  
+  const [display,setDisplay] = React.useState("boardMenu");  
   const [boardSize, setBoardSize] = React.useState(5);
   const toWin = calcToWin(boardSize); 
   const [error,setError] = React.useState(null); 

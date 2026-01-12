@@ -313,27 +313,28 @@
     place-self:start center;
     display:flex; 
     width: 100%;
-    height:fit-content; 
+    height:50%;  
     flex-direction: column;
     justify-content: center;  
     align-items: center;
   }
 
   .boardDisplay {
-    height: 300px;
-    width:300px; 
+    height:60%; 
+    aspect-ratio: 1/1;
     margin-top:20px; 
   }
 
   .boardBtnContainer{
-    margin-top:20px; 
     width: 300px;
+    height:20%; 
     display:flex; 
     justify-content: space-between;
   }
 
   .boardSize{
     width:300px; 
+    height:20%; 
     font-size:1.2rem; 
   }
 
