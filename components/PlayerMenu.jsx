@@ -115,6 +115,8 @@ const btnStyle = (btn,width) => {
   
 }
 
+
+
 function PlayerCard ({cardId,handleChange,playerIndex,}) {
 
   const [cardMargin,setCardMargin] = React.useState(0);
@@ -136,14 +138,14 @@ function PlayerCard ({cardId,handleChange,playerIndex,}) {
 
           return (
 
-            <div className="playerCard" onTran key={`player${index}`} style={cardStyle(cardMargin,index,playerIndex)} ref={cardElement} >
+            <div className="playerCard"  key={`player${index}${cardId}`} style={cardStyle(cardMargin,index,playerIndex)} ref={cardElement} >
 
               <img className="cardImg" src={card.img} />
               
               
 
               {card.type === "Player"?
-                <input type="text" id = {cardId} spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder="Player Name"  className="playerNameInput"/> 
+                <input type="text" id={cardId} name={cardId}  spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder="Player Name"  className="playerNameInput"/> 
                 : 
                 <h2>{card.type}</h2>
               } 
@@ -178,7 +180,7 @@ function PlayerMenuPhone ({handleClick,handleOnChange,player1Index,player2Index}
   } 
 
   React.useEffect(() => {
-    if (btnElement.current){
+    if (btnElement.current) {
       const width = btnElement.current.clientWidth; 
       setBtnWidth(width *1.8);
     }
@@ -261,8 +263,8 @@ function PlayerMenu ({setPlayer,player1,player2}) {
 
   const [player1Index, setPlayer1Index] = React.useState(currentPlayer(player1)); 
   const [player2Index,setPlayer2Index] = React.useState(currentPlayer(player2)); 
-  const [player1Name,setPlayer1Name] = React.useState("Player 1"); 
-  const [player2Name,setPlayer2Name] = React.useState("Player 2");
+  const [player1Name,setPlayer1Name] = React.useState(player1); 
+  const [player2Name,setPlayer2Name] = React.useState(player2);
   const [windowSize,setWindowSize] = React.useState(window.innerWidth);
   let display = "phone";
 
