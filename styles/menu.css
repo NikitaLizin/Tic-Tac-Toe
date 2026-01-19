@@ -94,6 +94,13 @@
   aspect-ratio: 0.9/1;
   background-color:transparent; 
   border:none;
+  color:transparent; 
+  -webkit-tap-highlight-color: transparent;
+}
+
+.playerCardBtn:active{
+  background-color:transparent; 
+  opacity:1; 
 }
 
 .player_type_btn_container{
