@@ -5,7 +5,7 @@ function Board ({boardSize,board,mode,handleGame,prevMove,win}) {
   const boardStyle = {
     display:"grid", 
     gridTemplateRows:`repeat(${boardSize},1fr)`, 
-    gridTemplateColumns: "100%",  
+    gridTemplateColumns: "100%",   
   }
 
   const rowStyle = {
