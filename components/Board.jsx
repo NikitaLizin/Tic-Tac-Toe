@@ -11,7 +11,7 @@ function Board ({boardSize,board,mode,handleGame,prevMove,win}) {
   const rowStyle = {
     display:"grid", 
     gridTemplateColumns:`repeat(${boardSize},1fr)`,
-    gridTemplateRows: "100%" , 
+    gridTemplateRows: "100%", 
   }
 
   const getPrevMove = (rowIndex,columnIndex) => {
