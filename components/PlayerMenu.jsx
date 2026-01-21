@@ -1,19 +1,8 @@
 
 
-const calcIndex =  (type,index) => {
-  switch(type){
-    case "back": 
-      if (index === 0) return playerCards.length-1; 
-      else return index-1; 
-    break; 
-    case "front": 
-      if (index === playerCards.length-1) return 0; 
-      else return index+1; 
-    break; 
-  }
-}
 
-const cardStyle = (margin,cardValue,index) => {
+
+const cardStyle = (margin,cardValue,index,cardAmount) => {
   
   if (cardValue === index) {
     return {
@@ -29,7 +18,7 @@ const cardStyle = (margin,cardValue,index) => {
       margin:`0px ${margin}px 0px 0px`,
       transform: "rotateY(-45deg) ",  
     }
-  } else if (cardValue === index+1 || cardValue === 0 && index === playerCards.length-1) {
+  } else if (cardValue === index+1 || cardValue === 0 && index === cardAmount-1) {
     return {
       margin:`0px -${margin}px 0px 0px`, 
       opacity: "1", 
@@ -49,53 +38,7 @@ const cardStyle = (margin,cardValue,index) => {
   
 }
 
-const currentPlayer = (value) => {
-  switch(value){
-    case "Easy": 
-      return 1; 
-    break; 
-    case "Normal":
-      return 2; 
-    break; 
-    case "Hard": 
-      return 3; 
-    break; 
-    default: 
-      return 0; 
-    break; 
-  }
 
-  
-
-}
-
-const playerCards = [
-
-  {
-
-    type:"Player", 
-    img: "./assets/Player.png", 
-    name: "Player name", 
-    
-  },
-  {
-    type:"Easy", 
-    img:"./assets/EasyNpc.png", 
-    name: "Easy"
-  },
-  {
-    type:"Normal",
-    img:"./assets/NormalNpc.png",  
-    name: "Normal"
-  },
-
-  {
-    type:"Hard", 
-    img:"./assets/HardNpc.png", 
-    name: "Hard", 
-  }
-
-]; 
 
 const btnStyle = (btn,width) => {
  
@@ -117,7 +60,7 @@ const btnStyle = (btn,width) => {
 
 
 
-function PlayerCard ({cardId,handleChange,playerIndex,}) {
+function PlayerCard ({cardId,handleChange,playerCards,playerIndex}) {
 
   const [cardMargin,setCardMargin] = React.useState(0);
   const cardElement = React.useRef(0);
@@ -138,20 +81,19 @@ function PlayerCard ({cardId,handleChange,playerIndex,}) {
 
           return (
 
-            <div className="playerCard"  key={`player${index}${cardId}`} style={cardStyle(cardMargin,index,playerIndex)} ref={cardElement} >
+            <div className="playerCard"  key={`player${index}${cardId}`} style={cardStyle(cardMargin,index,playerIndex,playerCards.length)} ref={cardElement} >
 
               <img className="cardImg" src={card.img} />
               
               
 
               {card.type === "Player"?
-                <input type="text" id={cardId} name={cardId}  spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder="Player Name"  className="playerNameInput"/> 
+                <input type="text" id={cardId} name={cardId} value={card.name} spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder={card.name}  className="playerNameInput"/> 
                 : 
                 <h2>{card.type}</h2>
               } 
               
             </div> 
-
           )
 
         })
@@ -162,7 +104,7 @@ function PlayerCard ({cardId,handleChange,playerIndex,}) {
 }
 
 
-function PlayerMenuPhone ({handleClick,handleOnChange,player1Index,player2Index}) {
+function PlayerMenuPhone ({handleClick,playerCards,handleOnChange,player1Index,player2Index}) {
   const [btnWidth,setBtnWidth] = React.useState(0);
   const [player,setPlayer] = React.useState("player1");
   
@@ -186,8 +128,6 @@ function PlayerMenuPhone ({handleClick,handleOnChange,player1Index,player2Index}
     }
   });
 
- 
-
   return (
     <>
 
@@ -205,9 +145,9 @@ function PlayerMenuPhone ({handleClick,handleOnChange,player1Index,player2Index}
 
         { player === "player1" ? 
 
-          <PlayerCard cardId = "player1" handleChange = {handleOnChange} playerIndex = {player1Index} />
+          <PlayerCard cardId = "player1" playerCards={playerCards[0]} handleChange = {handleOnChange} playerIndex = {player1Index} />
           :
-          <PlayerCard cardId = "player2" handleChange = {handleOnChange} playerIndex = {player2Index} />
+          <PlayerCard cardId = "player2" playerCards={playerCards[1]} handleChange = {handleOnChange} playerIndex = {player2Index} />
 
         }
 
@@ -259,12 +199,8 @@ function PlayerMenuDesktop ({handleClick,handleOnChange,player1Index,player2Inde
   )
 }
 
-function PlayerMenu ({setPlayer,player1,player2}) {
+function PlayerMenu ({changePlayerIndex,changePlayerName,player1Index,player2Index,playerCards}) {
 
-  const [player1Index, setPlayer1Index] = React.useState(currentPlayer(player1)); 
-  const [player2Index,setPlayer2Index] = React.useState(currentPlayer(player2)); 
-  const [player1Name,setPlayer1Name] = React.useState(player1); 
-  const [player2Name,setPlayer2Name] = React.useState(player2);
   const [windowSize,setWindowSize] = React.useState(window.innerWidth);
   let display = "phone";
 
@@ -275,60 +211,20 @@ function PlayerMenu ({setPlayer,player1,player2}) {
   
 
 
-  function handleClick (e) { 
+  const handleClick = (e) => { 
     
-    const {id,value} = e.target
-    let newIndex;  
+    const btnPressed = e.target.id; 
      
-
-    switch (id) {
-      case "player1Next":  
-        newIndex = calcIndex("front",player1Index)
-        setPlayer1Index(newIndex); 
-      break; 
-      case "player1Prev": 
-        newIndex = calcIndex("back",player1Index)
-        setPlayer1Index(newIndex); 
-      break; 
-      case "player2Next": 
-        newIndex = calcIndex("front",player2Index)
-        setPlayer2Index(newIndex);
-      break; 
-      case "player2Prev":
-        newIndex = calcIndex("back",player2Index)
-        setPlayer2Index(newIndex); 
-      break; 
-    }
-
-    const currentCard = playerCards[newIndex].type
-
-    if (value === "player1") {
-
-      if (currentCard === "Player") setPlayer(value,player1Name) 
-      else setPlayer(value,currentCard);
-
-    } else if (value === "player2") {
-
-      if (currentCard === "Player") setPlayer(value,player2Name) 
-      else setPlayer(value,currentCard);
-
-    }
-    
-    
+    changePlayerIndex(btnPressed); 
 
   }
 
   function handleOnChange(e){
     
     const {id,value} = e.target; 
-
-    if (id === "player1"){
-      setPlayer1Name(value);
-      setPlayer(id,value); 
-    } else if (id === "player2") {
-      setPlayer2Name(value);
-      setPlayer(id,value); 
-    }  
+    
+    changePlayerName(id,value); 
+    
     
   }
 
@@ -344,7 +240,7 @@ function PlayerMenu ({setPlayer,player1,player2}) {
         
      {/*  <PlayerMenuDesktop handleClick={handleClick} handleOnChange={handleOnChange} player1Index={player1Index} player2Index={player2Index} />  */}
 
-        <PlayerMenuPhone handleClick={handleClick} handleOnChange={handleOnChange} player1Index={player1Index} player2Index={player2Index} />
+        <PlayerMenuPhone handleClick={handleClick} playerCards ={playerCards} handleOnChange={handleOnChange} player1Index={player1Index} player2Index={player2Index} />
 
       </div>
     </>

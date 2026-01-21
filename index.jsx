@@ -1,3 +1,5 @@
+
+
 const app = document.querySelector("#root"); 
 const root = ReactDOM.createRoot(app); 
 let messageToSend = null; 
@@ -11,6 +13,18 @@ let messageToSend = null;
 // 9x9 6 in a row.
 // 10x10 6 in a row. 
 
+const getPlayerIndex =  (type,index,amountOfCards) => {
+  switch(type){
+    case "back": 
+      if (index === 0) return amountOfCards-1; 
+      else return index-1; 
+    break; 
+    case "front": 
+      if (index === amountOfCards-1) return 0; 
+      else return index+1; 
+    break; 
+  }
+}
 
 const choseMenuType =  (mode,difficulty,boardSize) => {
   
@@ -44,17 +58,14 @@ const calcToWin = (boardSize) => {
   else if (boardSize > 7) return 6;  
 }
 
-function mainStyle (display,player1,player2) {
+function mainStyle (display,player1Index,player2Index) {
 
-   
-  const checkForNpc = (player1,player2) => {
-    const arr = ["Easy","Normal","Hard"];
-    if (arr.includes(player1)) return true; 
-    else if (arr.includes(player2)) return true; 
-    else return null; 
+  const checkForNpc = (player1Index,player2Index) => {
+    
+    if (player1Index === 0 && player2Index === 0) return null; 
+    else return true; 
   }
-
-  const npc = checkForNpc(player1,player2);
+  const npc = checkForNpc(player1Index,player2Index);
 
   if (display === "game" && npc != null) {
     return {
@@ -97,35 +108,131 @@ function Main () {
 
 
   const [mode, setMode] = React.useState(null); 
-  const [player1,setPlayer1] = React.useState("Pall"); 
-  const [player2,setPlayer2] = React.useState("Nikk"); 
+
+  const [player1Index,setPlayer1Index] = React.useState(0); 
+  const [player2Index,setPlayer2Index] = React.useState(0); 
+  const [playerCards,setPlayerCards] = React.useState([
+   [
+    {
+
+      type:"Player", 
+      img: "./assets/Player.png", 
+      name: "Player name", 
+      
+    },
+    {
+      type:"Easy", 
+      img:"./assets/EasyNpc.png", 
+      name: "Easy"
+    },
+    {
+      type:"Normal",
+      img:"./assets/NormalNpc.png",  
+      name: "Normal"
+    },
+
+    {
+      type:"Hard", 
+      img:"./assets/HardNpc.png", 
+      name: "Hard", 
+    }
+   ],
+   [
+      {
+
+        type:"Player", 
+        img: "./assets/Player.png", 
+        name: "Player name", 
+    
+      },
+      {
+        type:"Easy", 
+        img:"./assets/EasyNpc.png", 
+        name: "Easy"
+      },
+      {
+        type:"Normal",
+        img:"./assets/NormalNpc.png",  
+        name: "Normal"
+      },
+
+      {
+        type:"Hard", 
+        img:"./assets/HardNpc.png", 
+        name: "Hard", 
+      }
+   ]
+
+    
+  ]);
+  const player1 = playerCards[0][player1Index].name;
+  const player2 = playerCards[1][player2Index].name;
+
   const [display,setDisplay] = React.useState("playerMenu");  
   const [boardSize, setBoardSize] = React.useState(5);
   const toWin = calcToWin(boardSize); 
   const [error,setError] = React.useState(null); 
 
 
+  const changePlayerIndex = (btnPressed) => {
+    let newIndex; 
+    switch (btnPressed) {
+      case "player1Next":  
+        newIndex = getPlayerIndex("front",player1Index,playerCards[0].length)
+        setPlayer1Index(newIndex); 
+      break; 
+      case "player1Prev": 
+        newIndex = getPlayerIndex("back",player1Index,playerCards[0].length)
+        setPlayer1Index(newIndex); 
+      break; 
+      case "player2Next": 
+        newIndex = getPlayerIndex("front",player2Index,playerCards[1].length)
+        setPlayer2Index(newIndex);
+      break; 
+      case "player2Prev":
+        newIndex = getPlayerIndex("back",player2Index,playerCards[1].length)
+        setPlayer2Index(newIndex); 
+      break; 
+    }
+  }
 
+  const changePlayerName = (type,value) => {
+    if (type === "player1"){
+      setPlayerCards(prev =>
+        prev.map((arr, arrIndex) =>
+          arrIndex === 0 ? 
+            arr.map((card, cardIndex) =>
+              cardIndex === player1Index ?
+                { ...card, name: value }
+                : card
+              )
+          : arr
+        )
+      );
+    } else if (type === "player2") {
+      setPlayerCards(prev => 
+        prev.map((arr,arrIndex) =>
+          arrIndex === 1 ?
+            arr.map((card,cardIndex) => 
+              cardIndex === player2Index ? 
+              {...card,name:value}
+            : card
+          )                  
+          : arr
+        )
+      )
+    }
 
-  const setPlayer = (type,value) => {
-    if (type === "player1") setPlayer1(value); 
-    else if (type ==="player2") setPlayer2(value);   
+    
   }
   
   const handleClick = (e) => {
-
     const btnPressed = e.target.value; 
     setDisplay(btnPressed); 
-   
-    
-    
-
   }
   
   const  changeMode = (value) => {
-    
     setMode(value); 
-
   }
 
   const changeBoardSize = (value) =>{
@@ -137,7 +244,6 @@ function Main () {
   }; 
 
   const startGame = () => {
-
     if (!mode) setError("no mode");
     else if (checkForDoubbleNPC(player1,player2)) {setError("doubble npc"); setDisplay("playerMenu")}
     else setDisplay("game"); 
@@ -147,7 +253,7 @@ function Main () {
   const showDisplay = () => {
     switch(display) {
       case "playerMenu": 
-        return <PlayerMenu setPlayer = {setPlayer} player1={player1} player2={player2} />
+        return <PlayerMenu playerCards = {playerCards} changePlayerName = {changePlayerName} changePlayerIndex ={changePlayerIndex} player1Index={player1Index} player2Index={player2Index} />
       break; 
       case "modeMenu": 
         return <ModeMenu changeMode={changeMode} currentMode = {mode} />
@@ -177,7 +283,7 @@ function Main () {
   return (
     
     
-    <div className = "main" style={mainStyle(display,player1,player2)}> 
+    <div className = "main" style={mainStyle(display,player1Index,player2Index)}> 
       {showDisplay()}
       { error && <MessageBox error={error} closeError = {closeError}  />}
       
