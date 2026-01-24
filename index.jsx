@@ -117,7 +117,7 @@ function Main () {
 
       type:"Player", 
       img: "./assets/Player.png", 
-      name: "Player name", 
+      name: "Player 1 name", 
       
     },
     {
@@ -142,7 +142,7 @@ function Main () {
 
         type:"Player", 
         img: "./assets/Player.png", 
-        name: "Player name", 
+        name: "Player 2 name", 
     
       },
       {
@@ -172,7 +172,6 @@ function Main () {
   const [boardSize, setBoardSize] = React.useState(5);
   const toWin = calcToWin(boardSize); 
   const [error,setError] = React.useState(null); 
-
 
   const changePlayerIndex = (btnPressed) => {
     let newIndex; 

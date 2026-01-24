@@ -189,7 +189,7 @@ function delay(ms) {
 function NpcTextBox ({difficulty,handleAnimationEnd}) {
   return (
     <div className="npc-text-box" onAnimationEnd={handleAnimationEnd}>
-      <h3> {textForNpc(difficulty)} </h3>
+      <p> {textForNpc(difficulty)} </p>
     </div>
   )
 }
@@ -197,16 +197,15 @@ function NpcTextBox ({difficulty,handleAnimationEnd}) {
 function PlayerTextBox ({difficulty}) {
   return (
     <div className="npc-text-box">
-      <h3> {textForPlayer(difficulty)} </h3>
+      <p> {textForPlayer(difficulty)} </p>
     </div>
   )
 }
 
 function GameOverTextBox ({win,difficulty}) {
-  console.log(win);
   return (
     <div className="npc-text-box">
-      <h3> {checkWin(win,difficulty)} </h3>
+      <p> {checkWin(win,difficulty)} </p>
     </div>
   )
 }

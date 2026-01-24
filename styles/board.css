@@ -34,10 +34,10 @@
   border-left: none;
 }
 
-.boardContainer{
+/* .boardContainer{
   width:400px; 
   height:400px; 
   grid-area:content; 
   place-self: center;
-}
+} */
 
