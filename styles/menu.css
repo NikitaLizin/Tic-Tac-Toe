@@ -1,7 +1,4 @@
 
-
-
-
 .menu {
   display:flex; 
   flex-direction: column; 
@@ -32,7 +29,6 @@
 
 .startGameBtn {
   background-color:#239BA7;
-
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
@@ -73,11 +69,10 @@
   text-align: center;
   position: absolute;  
   background-color: #E1AA36; 
-  transition: all 1s ease;
+  transition: all 0.5s ease-in-out;
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* font-size: clamp(0.8rem, 2.5vw,1.2rem); */
   color:#ECECBB; 
   place-self: center;
   box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px; 
@@ -121,19 +116,12 @@
   background-color:#E1AA36;
   opacity: 0.6; 
   color: #ECECBB;
-  /* font-size:1rem; */
   font-weight: bold; 
   margin-bottom:20px;   
 }
 
 .player_type_btn:first-child{
   margin-right:20px; 
-}
-
-
-.playerCard h2{
-  /* margin-bottom:10px;  */
-  /* font-size:clamp(0.7rem, 2.5vw, 3rem); */ 
 }
 
 .cardImg{
@@ -151,19 +139,15 @@
   border-radius: 0px;
   width:80%; 
   color:#ECECBB; 
-  /* font-size:clamp(16px, 2.5vw,1.2rem); */
   font-weight: bold;
 }
 
 .playerNameInput::placeholder{
-  /* font-size:clamp(15px,1.5vw,1.2rem); */
   color:#ECECBB;
   font-weight: bold;
-
 }
 
-.cardHeader {
-  /* font-size:clamp(1rem,4vw,3em); */ 
+.cardHeader { 
   color:#E1AA36; 
   font-weight: bolder;
   place-self: start center;
@@ -187,182 +171,173 @@
 
 
 
-/* ModeMenu start */
+/* ModeMenu */
 
-  .modeMenuContainer{
-    width:100%; 
-    height:50%; 
-    grid-area: content;
-    place-self: start center;
-    display: grid;
-    place-items: center;
-    grid-template-columns: 37% 25% 37%;
-  }
+.modeMenuContainer{
+  width:100%; 
+  height:50%; 
+  grid-area: content;
+  place-self: start center;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 37% 25% 37%;
+}
 
-  .mode_menu_container_phone{
-    width:100%; 
-    height:50%;
-    grid-area:content; 
-    place-self: start center;
-    display:flex; 
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.mode_menu_container_phone{
+  width:100%; 
+  height:50%;
+  grid-area:content; 
+  place-self: start center;
+  display:flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .mode_btn_container{
-    width:100%;
-    height:20%;
-    display:flex; 
-    justify-content:center;
-    align-items: center;
-  }
+.mode_btn_container{
+  width:100%;
+  height:20%;
+  display:flex; 
+  justify-content:center;
+  align-items: center;
+}
 
-  .mode_btn_phone{
-    width:150px; 
-    height:40px;
-    /* font-size:1rem;    */
-    border-radius: 4px;
-    color:#ECECBB; 
-    font-weight: bold;
-    border:none; 
-    text-align: center;
-    background-color: #E1AA36;
-    color:#ECECBB; 
-  }
+.mode_btn_phone{
+  width:150px; 
+  height:40px;
+  border-radius: 4px;
+  color:#ECECBB; 
+  font-weight: bold;
+  border:none; 
+  text-align: center;
+  background-color: #E1AA36;
+  color:#ECECBB; 
+}
+
+.mode_btn_phone:first-child{
+  margin-right:20px; 
+}
+
+.modeCard{
+  width:100%;
+  max-width:300px; 
+  aspect-ratio: 0.9/1.1; 
+  background-color: #E1AA36;
+  border-radius: 8px;
+  display:grid; 
+  grid-template-rows: 20% 60% 20%;
+  place-items:center; 
+  text-align: center;
+  transition: scale 250ms ease-in-out; 
+}
+
+.modeCard p{
+  color:#ECECBB; 
+}
+
+.modeCard h2 {
+  color:#ECECBB; 
+  font-weight: bolder;
+}
+
+.modeBtn{
+  width:100%; 
+  height:100%; 
+  background-color: #E1AA36;
+  color:#ECECBB; 
+  font-weight:bolder;
+  border:none; 
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.mode_display_phone{
+  width:100%; 
+  height:60%; 
+  display:flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+
+.modeScreen{
+  width:100%; 
+  aspect-ratio: 1/1;
+}
+
+.mode_img_phone{
+  height:100%;    
+  aspect-ratio: 1/1;
+  max-width: 90%;
+  border-radius:8px; 
+}
+
+.modeImg{
+  width:100%;
+  height:100%;   
+}
+
+.text_container_phone{
+  width:100%; 
+  height:20%; 
+  background-color: #E1AA36;
+  color:#ECECBB; 
+  text-align: center;
+  display:flex; 
+  justify-content: center;
+  align-items: center;
+}
 
 
 
-  .mode_btn_phone:first-child{
-    margin-right:20px; 
-  }
+/* boardMenu */
 
-  .modeCard{
-    width:100%;
-    max-width:300px; 
-    aspect-ratio: 0.9/1.1; 
-    background-color: #E1AA36;
-    border-radius: 8px;
-    display:grid; 
-    grid-template-rows: 20% 60% 20%;
-    place-items:center; 
-    text-align: center;
-    transition: scale 250ms ease-in-out; 
-  }
+.boardMenu {
+  grid-area:content; 
+  place-self:start center;
+  display:flex; 
+  width: 100%;
+  height:50%;  
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+}
 
-  .modeCard p{
-    color:#ECECBB; 
-    /* font-size:1rem;  */
-  }
+.boardDisplay {
+  height:60%; 
+  aspect-ratio: 1/1;
+  margin-top:20px; 
+}
 
-  .modeCard h2 {
-    color:#ECECBB; 
-    font-weight: bolder;
-    /* font-size: 1.8rem;   */
-  }
+.boardBtnContainer{
+  width: 300px;
+  height:20%; 
+  display:flex; 
+  justify-content: space-between;
+}
 
-  .modeBtn{
-    width:100%; 
-    height:100%; 
-    /* font-size:1.5rem;  */
-    background-color: #E1AA36;
-    color:#ECECBB; 
-    font-weight:bolder;
-    border:none; 
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
+.boardSize{
+  width:300px; 
+  height:20%; 
+}
 
-  .mode_display_phone{
-    width:100%; 
-    height:60%; 
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-  }
-  
+.boardBtn{
+  width:50px; 
+  height: 50px;
+  border-radius: 50%; 
+  font-weight: bolder; 
+  cursor: pointer;
+  display:flex; 
+  justify-content: center;
+  align-items: center;
+  border:none; 
+  background-color: #E1AA36;
+}
 
-  .modeScreen{
-    width:100%; 
-    aspect-ratio: 1/1;
-  }
+.boardBtn:hover{
+  scale:1.05; 
+}
 
-  .mode_img_phone{
-    height:100%;    
-    aspect-ratio: 1/1;
-    max-width: 90%;
-    border-radius:8px; 
-  }
 
-  .modeImg{
-    width:100%;
-    height: 100%;   
-  }
-
-  .text_container_phone{
-    width:100%; 
-    height:20%; 
-    background-color: #E1AA36;
-    color:#ECECBB; 
-    text-align: center;
-    /* font-size:1rem; 
-    line-height: 1.5; */
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-  }
-
-/* ModeMenu End */
-
-/* boardMenu start */
-  .boardMenu{
-    grid-area:content; 
-    place-self:start center;
-    display:flex; 
-    width: 100%;
-    height:50%;  
-    flex-direction: column;
-    justify-content: center;  
-    align-items: center;
-  }
-
-  .boardDisplay {
-    height:60%; 
-    aspect-ratio: 1/1;
-    margin-top:20px; 
-  }
-
-  .boardBtnContainer{
-    width: 300px;
-    height:20%; 
-    display:flex; 
-    justify-content: space-between;
-  }
-
-  .boardSize{
-    width:300px; 
-    height:20%; 
-    /* font-size:1.2rem; */ 
-  }
-
-  .boardBtn{
-    /* font-size:30px; */ 
-    width:50px; 
-    height: 50px;
-    border-radius: 50%; 
-    font-weight: bolder; 
-    cursor: pointer;
-    display:flex; 
-    justify-content: center;
-    align-items: center;
-    border:none; 
-    background-color: #E1AA36;
-  }
-
-  .boardBtn:hover{
-    scale:1.05; 
-  }
-
-/* boardMenu End */

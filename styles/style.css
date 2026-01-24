@@ -8,12 +8,6 @@
 
 */
 
-/* @media (max-width:500px){
-  :root {
-
-  }
-} */
-
 button{
   font-size: clamp(0.95rem, 0.9rem + 0.35vw, 1.125rem);
   line-height: 1;
@@ -44,9 +38,9 @@ input {
   line-height: 1.4;
 }
 
-::placeholder {
-  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
-  opacity: 0.6;
+input::placeholder {
+  font-size: clamp(0.85rem, 0.8rem + 0.2vw, 1.1rem);
+  opacity: 0.7;
 }
 
 
@@ -98,7 +92,6 @@ body{
   height:50%; 
   aspect-ratio: 1/1; 
   border-radius: 50%;
-  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
 }
 
 
@@ -109,12 +102,9 @@ body{
   color:#ECECBB; 
   
   text-align: center;
-  /* font-weight: bolder;  */
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  /* border-right: .15em solid black; */ /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */ 
-  /* , blink-caret .75s step-end infinite */;
+  overflow: hidden; 
+  white-space: nowrap; 
+  margin: 0 auto;  
   animation: typing 1.5s steps(28, end); 
 }
 

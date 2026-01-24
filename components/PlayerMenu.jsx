@@ -88,7 +88,7 @@ function PlayerCard ({cardId,handleChange,playerCards,playerIndex}) {
               
 
               {card.type === "Player"?
-                <input type="text" id={cardId} name={cardId} value={card.name} spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder={card.name}  className="playerNameInput"/> 
+                <input type="text" id={cardId} name={cardId} /* value={card.name} */ spellCheck = "false" autoComplete="off" onChange={handleChange} placeholder={card.name}  className="playerNameInput"/> 
                 : 
                 <h3>{card.type}</h3>
               } 
